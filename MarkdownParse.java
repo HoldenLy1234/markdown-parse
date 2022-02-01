@@ -14,9 +14,11 @@ public class MarkdownParse {
             int nextOpenBracket = markdown.indexOf("[", currentIndex);
             int nextCloseBracket = markdown.indexOf("]", nextOpenBracket);
             int openParen = markdown.indexOf("(", nextCloseBracket);
+            if(openParen == -1){
+                break;
+            }
             int closeParen = markdown.indexOf(")", openParen);
 		    if(closeParen == -1){
-                System.out.println("Link is not formatted correctly");
                 break;
 		    }
             toReturn.add(markdown.substring(openParen + 1, closeParen));
